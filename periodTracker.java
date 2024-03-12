@@ -19,9 +19,16 @@ public class PeriodTracker {
         System.out.print("Enter the average length of your menstrual cycle (in days): ");
         int cycleLength = scanner.nextInt();
         
+        // Get the length of the previous cycle
+        System.out.print("Enter the length of your previous cycle (in days): ");
+        int previousCycleLength = scanner.nextInt();
+        
+        // Calculate the average cycle length
+        int averageCycleLength = (cycleLength + previousCycleLength) / 2;
+        
         // Predict the next period and ovulation date
-        LocalDate nextPeriodDate = startDate.plusDays(cycleLength);
-        LocalDate ovulationDate = startDate.plusDays((cycleLength - 14) / 2); // Assuming ovulation occurs around day 14
+        LocalDate nextPeriodDate = startDate.plusDays(averageCycleLength);
+        LocalDate ovulationDate = startDate.plusDays((averageCycleLength - 14) / 2); // Assuming ovulation occurs around day 14
         
         // Display the results
         System.out.println("Your next period is predicted to start on: " + nextPeriodDate.format(formatter));
